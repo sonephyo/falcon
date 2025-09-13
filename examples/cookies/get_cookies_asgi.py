@@ -1,6 +1,5 @@
 class Resource:
     async def on_get(self, req, resp):
-
         # Get a dict of name/value cookie pairs.
         cookies = req.cookies
 
