@@ -38,8 +38,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Programming Language :: Python :: Free Threading",
-    "Programming Language :: Python :: Free Threading :: 2 - Beta",
+    "Programming Language :: Python :: Free Threading :: 3 - Stable",
     "Programming Language :: Cython",
     "Typing :: Typed",
 ]
@@ -86,14 +87,20 @@ exclude = [
     "falcon/bench",
     "falcon/cmd",
 ]
+# NOTE(vytas): The below flags are equivalent to --strict as of Mypy 1.20.
+check_untyped_defs = true
+disallow_any_generics = true
 disallow_incomplete_defs = true
 disallow_subclassing_any = true
 disallow_untyped_calls = true
 disallow_untyped_decorators = true
 disallow_untyped_defs = true
 extra_checks = true
+implicit_reexport = false
 strict_bytes = true
 strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
@@ -102,6 +109,7 @@ module = [
     "cbor2",
     "cython",
     "daphne",
+    "granian",
     "gunicorn",
     "hypercorn",
     "meinheld",
@@ -125,7 +133,7 @@ ignore_missing_imports = true
 [tool.towncrier]
 package = "falcon"
 package_dir = ""
-filename = "docs/changes/4.3.0.rst"
+filename = "docs/changes/4.4.0.rst"
 directory = "docs/_newsfragments"
 issue_format = "`#{issue} <https://github.com/falconry/falcon/issues/{issue}>`__"
 
@@ -240,5 +248,5 @@ testpaths = [
 
 [tool.cibuildwheel]
 build-frontend = "build"
-test-requires = ["-r requirements/cibwtest"]
+test-requires = ["-r", "requirements/cibwtest"]
 test-command = "pytest {project}/tests"

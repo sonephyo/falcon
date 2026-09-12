@@ -95,6 +95,7 @@ extensions = [
     'ext.cibuildwheel',
     'ext.doorway',
     'ext.falcon_releases',
+    'ext.newsfragments',
     'ext.private_args',
     'ext.rfc',
     'ext.workarounds',
@@ -141,7 +142,7 @@ autodoc_type_aliases = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_css_files = ['custom.css']
-html_js_files = ['custom-icons.js']
+html_js_files = [('custom-icons.js', {'defer': 'defer'})]
 html_favicon = '_static/img/favicon.ico'
 html_logo = '_static/img/logo.svg'
 html_static_path = ['_static']
